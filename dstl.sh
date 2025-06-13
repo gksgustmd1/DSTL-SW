@@ -12,6 +12,7 @@ cat <<EOF
 Usage: $(basename "$0") <command> <subcommand> [args...]
 
 Commands
+  dstl create database                                     #create db 
   dstl create license                                      #create license serial 
   dstl help                                                #Show help
 
@@ -78,16 +79,20 @@ main() {
     echo "  Serial   : $SERIAL"
     echo "  Version  : $VERSION"
 
-    python3 "$FILE_PATH/create_license.py" "$MODEL" "$SERIAL" "$VERSION" 
+    python3 "$FILE_PATH/create_license.py" "$MODEL" "$SERIAL" "$VERSION"
+
+  elif [[ "$CMD" == "create" && "$SUBCMD" == "database" ]]; then
+    echo "Creating database..."
+    python3 "$FILE_PATH/create_db.py"
+
+  elif [[ "$CMD" == "help" ]]; then
+    usage
+
   else
+    echo "❌ Unknown command: $CMD $SUBCMD"
     usage
     exit 1
   fi
-
-  if [[ "$CMD" == "help" ]]; then
-    usage
-  fi
-
 }
 
 main "$@"
