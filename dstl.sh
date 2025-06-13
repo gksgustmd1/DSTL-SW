@@ -54,7 +54,7 @@ choose_version() {
     case "$version_choice" in
       1) VERSION="1.0.0"; break ;;
       2) VERSION="1.0.1"; break ;;
-      *) echo "❌ Invalid choice. Please select 1 or 2." ;;
+      *) echo "Invalid choice. Please select 1 or 2." ;;
     esac
   done
 }
