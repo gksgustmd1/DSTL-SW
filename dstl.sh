@@ -14,7 +14,8 @@ Usage: $(basename "$0") <command> <subcommand> [args...]
 Commands
   dstl create database                                     #create db 
   dstl create license                                      #create license serial 
-  dstl help                                                #Show help
+  dstl help                                                #show help command
+  dstl show log                                            #show check_license log
 
 EOF
 }
@@ -88,6 +89,10 @@ main() {
   elif [[ "$CMD" == "help" ]]; then
     usage
 
+  elif [[ "$CMD" == "show" && "$SUBCMD" == "log" ]]; then
+    journalctl -u check-license.service -f
+  elif [[ "$CMD" == "help" ]]; then
+    usage
   else
     echo "Unknown command: $CMD $SUBCMD"
     usage
