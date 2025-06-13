@@ -89,7 +89,7 @@ main() {
     usage
 
   else
-    echo "❌ Unknown command: $CMD $SUBCMD"
+    echo "Unknown command: $CMD $SUBCMD"
     usage
     exit 1
   fi
