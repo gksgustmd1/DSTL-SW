@@ -90,6 +90,9 @@ main() {
     usage
 
   elif [[ "$CMD" == "show" && "$SUBCMD" == "log" ]]; then
+    echo "show /var/log/dstl"
+    cat /var/log/dstl.log
+    echo "show journalctl log"
     journalctl -u check-license.service -f
   elif [[ "$CMD" == "help" ]]; then
     usage
